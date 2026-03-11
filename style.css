@@ -444,6 +444,20 @@ img {
   display: none !important;
 }
 
+.user-delete-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(239, 68, 68, 0.7);
+  background: rgba(127, 29, 29, 0.9);
+  color: #fee2e2;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+}
+
+.user-delete-btn:hover {
+  background: rgba(185, 28, 28, 1);
+}
+
 .hidden {
   display: none !important;
 }

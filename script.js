@@ -256,7 +256,7 @@ async function loadUsers() {
       .map((u) => {
         const fullName = [u.firstName, u.lastName].filter(Boolean).join(' ');
         return `
-          <tr>
+          <tr data-user-id="${u.id}">
             <td>${u.id}</td>
             <td>${fullName}</td>
             <td>${u.username}</td>
@@ -264,6 +264,9 @@ async function loadUsers() {
             <td>${u.phone}</td>
             <td>${u.countryCode}</td>
             <td>${u.age}</td>
+            <td>
+              <button type="button" class="user-delete-btn" data-id="${u.id}">Delete</button>
+            </td>
           </tr>
         `;
       })
@@ -290,6 +293,38 @@ if (storedWelcome) {
 }
 
 setLoggedInUI(!!storedWelcome);
+
+// Admin: delete user from table
+const usersTableBody = document.getElementById('users-table-body');
+
+usersTableBody?.addEventListener('click', async (e) => {
+  const target = e.target;
+  if (!(target instanceof HTMLElement)) return;
+  const btn = target.closest('.user-delete-btn');
+  if (!btn) return;
+  const id = btn.getAttribute('data-id');
+  if (!id) return;
+
+  const confirmed = window.confirm('Are you sure you want to delete this user?');
+  if (!confirmed) return;
+
+  btn.disabled = true;
+  try {
+    const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success) {
+      alert(data.message || 'Failed to delete user.');
+      btn.disabled = false;
+      return;
+    }
+    // Refresh users list
+    await loadUsers();
+  } catch (err) {
+    console.error('Delete user error:', err);
+    alert('Something went wrong while deleting user.');
+    btn.disabled = false;
+  }
+});
 
 // Password visibility toggles
 document.querySelectorAll('.password-toggle').forEach((btn) => {

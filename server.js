@@ -173,6 +173,32 @@ app.get("/api/users", (req, res) => {
   });
 });
 
+// Delete user by id (used by admin13)
+app.delete("/api/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isFinite(id) || id <= 0) {
+    return res.status(400).json({ success: false, message: "Invalid user id" });
+  }
+
+  const sql = `DELETE FROM users WHERE id = ?`;
+  db.run(sql, [id], function (err) {
+    if (err) {
+      console.error("DB error on delete user:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Database error" });
+    }
+
+    if (this.changes === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    return res.json({ success: true });
+  });
+});
+
 // Serve static frontend files
 app.use(express.static(__dirname));
 
