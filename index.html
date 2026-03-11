@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">MyModernSite</div>
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#users" id="users-nav-link" class="admin-only">Users</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-auth">
+        <span id="welcome-text" class="welcome-text"></span>
+        <button class="btn btn-ghost" id="nav-login">Login</button>
+        <button class="btn btn-primary nav-signup" id="nav-signup">Sign Up</button>
+        <button class="btn btn-ghost hidden" id="nav-logout">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Simple, Beautiful, Modern Website</h1>
+          <p>
+            A clean, responsive starter template built with pure HTML and CSS.
+            Customize the content and colors to make it your own.
+          </p>
+          <div class="hero-actions">
+            <a href="#features" class="btn btn-primary">Explore Features</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <span class="status-dot"></span>
+            <span class="status-text">Live Preview</span>
+          </div>
+          <div class="hero-card-body">
+            <div class="pill pill-green">Fast</div>
+            <div class="pill pill-blue">Responsive</div>
+            <div class="pill pill-purple">Modern</div>
+            <p class="hero-card-text">
+              This card represents a preview of your project, product, or idea.
+              Swap this text for anything you want to highlight.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section section-light">
+      <div class="container">
+        <h2 class="section-title">Features</h2>
+        <p class="section-subtitle">
+          Built with best practices and a focus on clarity and simplicity.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Responsive Layout</h3>
+            <p>
+              Works beautifully on desktops, tablets, and mobile devices with a flexible grid system.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Clean Typography</h3>
+            <p>
+              Uses the Inter font with comfortable spacing and hierarchy that is easy on the eyes.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Easy to Customize</h3>
+            <p>
+              Change colors, fonts, and sections quickly thanks to well-structured styles.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container two-column">
+        <div>
+          <h2 class="section-title">About This Template</h2>
+          <p>
+            This is a minimal starting point for your next website. It avoids unnecessary complexity so you can focus on
+            your content and ideas.
+          </p>
+          <p>
+            You can turn this into a personal portfolio, a product landing page, or a simple business site by editing the
+            text and adding your own images or icons.
+          </p>
+        </div>
+        <div class="highlight-box">
+          <h3>Quick Start</h3>
+          <ul>
+            <li>Edit the text in this file.</li>
+            <li>Customize colors in `style.css`.</li>
+            <li>Add more sections as your site grows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="users" class="section section-light admin-only">
+      <div class="container">
+        <h2 class="section-title">Registered users</h2>
+        <p class="section-subtitle">
+          This table shows all users stored in your SQLite database (except passwords).
+        </p>
+        <div class="users-card">
+          <p id="users-empty" class="users-empty">No users yet. Create an account to see it here.</p>
+          <div class="users-table-wrapper">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full name</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Country</th>
+                  <th>Age</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Replace this simple form with your preferred contact method.
+        </p>
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="year"></span> MyModernSite. All rights reserved.</p>
+      <p class="footer-note">Built with pure HTML &amp; CSS.</p>
+    </div>
+  </footer>
+
+  <div class="auth-modal" id="auth-modal">
+    <div class="auth-backdrop" id="auth-backdrop"></div>
+    <div class="auth-modal-card">
+      <button class="auth-close" id="auth-close" aria-label="Close authentication dialog">&times;</button>
+      <div class="auth-tabs">
+        <button class="auth-tab" data-target="login">Login</button>
+        <button class="auth-tab" data-target="signup">Sign Up</button>
+      </div>
+
+      <div class="auth-panels">
+        <div class="auth-panel auth-panel-login">
+          <h3>Welcome back</h3>
+          <form class="auth-form" autocomplete="on">
+            <div class="form-field">
+              <label for="login-username">Username</label>
+              <input type="text" id="login-username" placeholder="johndoe" required />
+            </div>
+            <div class="form-field password-field">
+              <label for="login-password">Password</label>
+              <div class="password-input-wrapper">
+                <input type="password" id="login-password" placeholder="••••••••" required />
+                <button type="button" class="password-toggle" data-target="login-password">Show</button>
+              </div>
+            </div>
+            <div class="auth-meta">
+              <label class="remember-me">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="auth-link">Forgot password?</a>
+            </div>
+            <p id="login-error" class="form-error"></p>
+            <button type="submit" class="btn btn-primary auth-button" id="login-submit">Login</button>
+          </form>
+          <p class="auth-switch-text">
+            New here?
+            <button type="button" class="auth-inline-switch" data-target="signup">Create an account</button>
+          </p>
+        </div>
+
+        <div class="auth-panel auth-panel-signup">
+          <h3>Create your account</h3>
+          <form class="auth-form" id="signup-form" autocomplete="on">
+            <div class="form-field">
+              <label for="signup-fullname">Full name</label>
+              <input type="text" id="signup-fullname" placeholder="John Doe" required />
+            </div>
+            <div class="form-field">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" placeholder="johndoe" required />
+            </div>
+            <div class="form-field">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="signup-phone">Phone number</label>
+              <input type="tel" id="signup-phone" placeholder="+30 6900000000" required />
+            </div>
+            <div class="form-field password-field">
+              <label for="signup-password">Password</label>
+              <div class="password-input-wrapper">
+                <input type="password" id="signup-password" placeholder="Create a password" required />
+                <button type="button" class="password-toggle" data-target="signup-password">Show</button>
+              </div>
+            </div>
+            <p class="auth-footnote">
+              By creating an account, you agree to our <a href="#" class="auth-link">Terms</a> &amp;
+              <a href="#" class="auth-link">Privacy Policy</a>.
+            </p>
+            <p id="signup-error" class="form-error"></p>
+            <button type="submit" class="btn btn-primary auth-button" id="signup-submit">Create Account</button>
+          </form>
+          <p class="auth-switch-text">
+            Already have an account?
+            <button type="button" class="auth-inline-switch" data-target="login">Log in</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
