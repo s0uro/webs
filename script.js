@@ -1,3 +1,6 @@
+// API base URL: use Render backend when not on localhost (e.g. when on Vercel)
+const API_BASE = window.location.hostname === 'localhost' ? '' : 'https://webs1-szxu.onrender.com';
+
 // Set current year in footer
 const yearSpan = document.getElementById('year');
 if (yearSpan) {
@@ -91,7 +94,7 @@ signupForm?.addEventListener('submit', async (e) => {
   try {
     signupSubmit?.classList.add('is-loading');
     if (signupSubmit) signupSubmit.disabled = true;
-    const res = await fetch('/api/signup', {
+    const res = await fetch(`${API_BASE}/api/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -149,7 +152,7 @@ loginForm?.addEventListener('submit', async (e) => {
   try {
     loginSubmit?.classList.add('is-loading');
     if (loginSubmit) loginSubmit.disabled = true;
-    const res = await fetch('/api/login', {
+    const res = await fetch(`${API_BASE}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
@@ -233,7 +236,7 @@ async function loadUsers() {
   if (!tbody || !empty) return;
 
   try {
-    const res = await fetch('/api/users');
+    const res = await fetch(`${API_BASE}/api/users`);
     const data = await res.json().catch(() => ({}));
 
     if (!res.ok || !data.success || !Array.isArray(data.users)) {
@@ -310,7 +313,7 @@ usersTableBody?.addEventListener('click', async (e) => {
 
   btn.disabled = true;
   try {
-    const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+    const res = await fetch(`${API_BASE}/api/users/${id}`, { method: 'DELETE' });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || !data.success) {
       alert(data.message || 'Failed to delete user.');
